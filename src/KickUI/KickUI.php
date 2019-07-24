@@ -14,14 +14,14 @@ use jojoe77777\FormAPI;
 class KickUI extends PluginBase implements Listener {	
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getLogger()->info(TextFormat::GREEN . "KickUI by MegaGastPvP.");
+        $this->getLogger()->info(TextFormat::GREEN . "Sell by Bronzs.");
     }
     public function onDisable() {
-        $this->getLogger()->info(TextFormat::RED . "KickUI disabled.");
+        $this->getLogger()->info(TextFormat::RED . "sellUI disabled.");
     }	
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {		
 		switch($cmd->getName()){		
-			case "kickui":
+			case "sellui":
 				if($sender instanceof Player) {	
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");				
 					if($api === null || $api->isDisabled()){					
@@ -32,13 +32,13 @@ class KickUI extends PluginBase implements Listener {
 					}
 						switch($result){							
 							case 0:																
-                     $this->getServer()->dispatchCommand($sender, trim(implode(" ", ["kick ".$result.""])));														
+                     $this->getServer()->dispatchCommand($sender, trim(implode(" ", ["sell ".$result.""])));														
     							       break;																						
 						}					
 					});					
-					$form->setTitle("Kick Screen");
-					$form->setContent("Please choose who your kicking.");
-					$form->addInput(TextFormat::BOLD . "Who you are kicking");	
+					$form->setTitle("§l§bSell §aGUI");
+					$form->setContent("what ro you want to sell: inv,ores,inv,all.");
+					$form->addInput(TextFormat::BOLD . "hand");	
 					$form->sendToPlayer($sender);										
 				}
 				else{
